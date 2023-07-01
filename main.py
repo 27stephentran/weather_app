@@ -140,7 +140,7 @@ class MainWindow(QMainWindow):
                 city_name, country_code = self.txt_search.text().split(", ")
                 weather_data = get_weather(city_name, country_code)
                 if isinstance(weather_data, dict):
-                    
+                    today's work 
             except:
                 console.print_exception()
                 self.txt_search.clear()
