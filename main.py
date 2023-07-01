@@ -140,46 +140,7 @@ class MainWindow(QMainWindow):
                 city_name, country_code = self.txt_search.text().split(", ")
                 weather_data = get_weather(city_name, country_code)
                 if isinstance(weather_data, dict):
-                    # Extract Data from weather_data
-                    local_time, local_date = get_local_time(weather_data["timezone"])
-                    icon = get_icon(weather_data["weather"][0]["icon"])
-
-                    temp = get_celsius(weather_data["main"]["temp"])
-                    description = weather_data["weather"][0]["description"].title()
-
-                    temp_feels = get_celsius(weather_data["main"]["feels_like"])
-                    temp_max = get_celsius(weather_data["main"]["temp_max"])
-                    temp_min = get_celsius(weather_data["main"]["temp_min"])
-                    humidity = weather_data["main"]["humidity"]
-                    wind = round(weather_data["wind"]["speed"] * 3.6, 2)
-
-                    # Update Seach Input
-                    self.txt_search.clear()
-                    self.txt_search.setPlaceholderText(f"{city_name}, {country_code}")
-
-                    # Update Info 1 Labels
-                    self.lbl_city.setText(f"City: {city_name}")
-                    self.lbl_country.setText(f"Country: {country_code}")
-
-                    # Update Info 2 Labels
-                    self.lbl_time.setText(f"Time: {local_time}")
-                    self.lbl_date.setText(f"Date: {local_date}")
-
-                    # Update Weather Info Labels
-                    self.lbl_icon.setPixmap(icon)
-                    self.lbl_temp.setText(temp)
-                    self.lbl_description.setText(description)
-
-                    # Update Weather Detail Labels
-                    self.lbl_feels.setText(f"Feels: {temp_feels}")
-                    self.lbl_max.setText(f"Max: {temp_max}")
-                    self.lbl_min.setText(f"Max: {temp_min}")
-                    self.lbl_humidity.setText(f"Humidity: {humidity}%")
-                    self.lbl_wind.setText(f"Wind: {wind}km/ph")
-                else:
-                    self.txt_search.clear()
-                    self.txt_search.setPlaceholderText(f"{weather_data}. Check format > Hanoi, VN")
-
+                    
             except:
                 console.print_exception()
                 self.txt_search.clear()
